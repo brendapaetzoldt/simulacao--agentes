@@ -16,31 +16,14 @@ to reset
   reset-ticks
 end
 
-;SECTION 3: SPROUT AND MOVE AIRPLANES IN NAMIBIA ONLY
- to setup-aircrafts
-ask aircrafts[
-set shape "car"
-    set color blue
-    set size 12]
-end
 
-to define-airplane-regions
+to define--regions
   ask patches with [pcolor = 0] [set asfalto true]
   ask patches with [pcolor = 9.9] [set quarteirao true]
 end
 
-to appear-aircrafts
-   if any? patches with [asfalto = true][
-  ask one-of patches with [asfalto = true] [sprout-aircrafts 3]]
-end
 
-to move_aircrafts
-  ask aircrafts [fd 1 rt random 20 lt random 20]
 
-  ask aircrafts[
-    if [asfalto] of patch-ahead 5 = 0
-    [set heading heading - 180]]
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
 280
@@ -70,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-110
-50
-173
-95
+20
+10
+83
+55
 NIL
 reset
 NIL
@@ -87,10 +70,10 @@ NIL
 1
 
 BUTTON
-175
-50
-238
-95
+85
+10
+148
+55
 NIL
 go
 T
@@ -104,10 +87,10 @@ NIL
 1
 
 BUTTON
-110
-100
-242
-145
+20
+60
+152
+105
 setup
 setup
 NIL
@@ -121,10 +104,10 @@ NIL
 1
 
 CHOOSER
-90
-150
-245
-195
+20
+110
+155
+155
 bairros
 bairros
 "mapa.png"

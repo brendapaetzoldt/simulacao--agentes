@@ -17,7 +17,7 @@ to reset
 end
 
 
-to define-airplane-regions
+to define-asfaltos
   ask patches with [pcolor = 0] [set asfalto true]
   ask patches with [pcolor = 9.9] [set quarteirao true]
 end
@@ -53,10 +53,10 @@ ticks
 30.0
 
 BUTTON
-110
-50
-173
-95
+20
+10
+83
+55
 NIL
 reset
 NIL
@@ -70,10 +70,10 @@ NIL
 1
 
 BUTTON
-175
-50
-238
-95
+85
+10
+148
+55
 NIL
 go
 T
@@ -87,10 +87,10 @@ NIL
 1
 
 BUTTON
-110
-100
-242
-145
+20
+60
+152
+105
 setup
 setup
 NIL
@@ -104,10 +104,10 @@ NIL
 1
 
 CHOOSER
-90
-150
-245
-195
+20
+110
+155
+155
 bairros
 bairros
 "mapa.png"
