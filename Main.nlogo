@@ -1,68 +1,119 @@
 
+
+patches-own [asfalto quarteirao]
+
+to setup
+  import-pcolors bairros
+  resize-world 0 230 0 138
+end
+
+to go
+   tick
+ end
+
+to reset
+  clear-all
+  reset-ticks
+end
+
+
+to define-airplane-regions
+  ask patches with [pcolor = 0] [set asfalto true]
+  ask patches with [pcolor = 9.9] [set quarteirao true]
+end
+
+
+
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
+280
 10
-647
-448
+981
+436
 -1
 -1
-13.0
+3.0
 1
-10
+15
 1
 1
 1
 0
-1
-1
-1
--16
-16
--16
-16
 0
 0
+1
+0
+230
+0
+138
+1
+1
 1
 ticks
 30.0
 
+BUTTON
+110
+50
+173
+95
+NIL
+reset
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+175
+50
+238
+95
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+110
+100
+242
+145
+setup
+setup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+CHOOSER
+90
+150
+245
+195
+bairros
+bairros
+"mapa.png"
+0
+
 @#$#@#$#@
-## WHAT IS IT?
-
-(a general understanding of what the model is trying to show or explain)
-
-## HOW IT WORKS
-
-(what rules the agents use to create the overall behavior of the model)
-
-## HOW TO USE IT
-
-(how to use the model, including a description of each of the items in the Interface tab)
-
-## THINGS TO NOTICE
-
-(suggested things for the user to notice while running the model)
-
-## THINGS TO TRY
-
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
-
-## EXTENDING THE MODEL
-
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
-
-## NETLOGO FEATURES
-
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
-
-## RELATED MODELS
-
-(models in the NetLogo Models Library and elsewhere which are of related interest)
-
-## CREDITS AND REFERENCES
-
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -230,6 +281,16 @@ true
 0
 Line -7500403 true 150 0 150 150
 
+moose
+false
+0
+Polygon -7500403 true true 196 228 198 297 180 297 178 244 166 213 136 213 106 213 79 227 73 259 50 257 49 229 38 197 26 168 26 137 46 120 101 122 147 102 181 111 217 121 256 136 294 151 286 169 256 169 241 198 211 188
+Polygon -7500403 true true 74 258 87 299 63 297 49 256
+Polygon -7500403 true true 25 135 15 186 10 200 23 217 25 188 35 141
+Polygon -7500403 true true 270 150 253 100 231 94 213 100 208 135
+Polygon -7500403 true true 225 120 204 66 207 29 185 56 178 27 171 59 150 45 165 90
+Polygon -7500403 true true 225 120 249 61 241 31 265 56 272 27 280 59 300 45 285 90
+
 pentagon
 false
 0
@@ -371,6 +432,7 @@ Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
 NetLogo 6.2.2
 @#$#@#$#@
+need-to-manually-make-preview-for-this-model
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -386,5 +448,5 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-0
+1
 @#$#@#$#@
