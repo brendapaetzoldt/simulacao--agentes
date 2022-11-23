@@ -1,13 +1,17 @@
 
-
 patches-own [asfalto quarteirao]
+breed [carros carro]
 
 to setup
   import-pcolors bairros
   resize-world 0 230 0 138
+  define-asfaltos
+  setup-carro
+  asfalto-carro
 end
 
 to go
+
    tick
  end
 
@@ -16,6 +20,17 @@ to reset
   reset-ticks
 end
 
+to setup-carro
+  ask carros[
+  set shape "car"
+   set color yellow
+  set size 8]
+end
+
+to asfalto-carro
+   if any? patches with [asfalto = true][
+  ask one-of patches with [asfalto = true] [sprout-carros 3]]
+end
 
 to define-asfaltos
   ask patches with [pcolor = 0] [set asfalto true]

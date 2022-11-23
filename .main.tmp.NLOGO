@@ -1,13 +1,17 @@
 
-
 patches-own [asfalto quarteirao]
+breed [carros carro]
 
 to setup
   import-pcolors bairros
   resize-world 0 230 0 138
+  define-asfaltos
+  setup-carro
+  asfalto-carro
 end
 
 to go
+
    tick
  end
 
@@ -16,8 +20,31 @@ to reset
   reset-ticks
 end
 
+to setup-carro
 
-to define--regions
+  create-turtles 1 [
+    set xcor 0
+    set ycor 0
+    set shape "car"
+    set heading 0
+
+   set color yellow
+  ]
+end
+
+
+  ask carro
+  set shape "car"
+   set color yellow
+  set size 8
+end
+
+to asfalto-carro
+   if any? patches with [asfalto = true][
+  ask one-of patches with [asfalto = true] [sprout-carro 3]]
+end
+
+to define-asfaltos
   ask patches with [pcolor = 0] [set asfalto true]
   ask patches with [pcolor = 9.9] [set quarteirao true]
 end
