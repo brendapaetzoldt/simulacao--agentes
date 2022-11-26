@@ -10,7 +10,7 @@ to setup
 end
 
 to go
-  a
+  ask carros [move_carro]
    tick
  end
 
@@ -37,10 +37,10 @@ end
 
 to define-asfaltos
   ask patches with [pcolor = 0] [set asfalto true]
-  ask patches with [pcolor = 9.9] [set quarteirao true]
+  ask patches with [pcolor  9.9] [set quarteirao true]
 end
 
-to mocve_carro
+to move_carro
   ask carros [fd 1 rt random 20 lt random 20]
 
   ask carros[

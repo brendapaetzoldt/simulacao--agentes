@@ -36,8 +36,8 @@ to asfalto-carro
 end
 
 to define-asfaltos
-  ask patches with [pcolor = 0] [set asfalto true]
-  ask patches with [pcolor = 9.9] [set quarteirao true]
+  ask patches with [pcolor <= 0] [set asfalto true]
+  ask patches with [pcolor >= 9.9] [set quarteirao true]
 end
 
 to move_carro
