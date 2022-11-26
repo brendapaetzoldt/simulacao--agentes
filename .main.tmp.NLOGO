@@ -1,4 +1,3 @@
-
 patches-own [asfalto quarteirao]
 breed [carros carro]
 
@@ -11,7 +10,7 @@ to setup
 end
 
 to go
-
+  a
    tick
  end
 
@@ -22,26 +21,18 @@ end
 
 to setup-carro
 
-  create-turtles 1 [
-    set xcor 0
-    set ycor 0
-    set shape "car"
-    set heading 0
-
-   set color yellow
-  ]
-end
-
-
-  ask carro
+  ask carros [
   set shape "car"
    set color yellow
-  set size 8
+  set size 8]
 end
+
+
+
 
 to asfalto-carro
    if any? patches with [asfalto = true][
-  ask one-of patches with [asfalto = true] [sprout-carro 3]]
+  ask one-of patches with [asfalto = true] [sprout-carros 3]]
 end
 
 to define-asfaltos
@@ -49,8 +40,13 @@ to define-asfaltos
   ask patches with [pcolor = 9.9] [set quarteirao true]
 end
 
+to mocve_carro
+  ask carros [fd 1 rt random 20 lt random 20]
 
-
+  ask carros[
+    if [asfalto] of patch-ahead 5 = 0
+    [set heading heading - 180]]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 280

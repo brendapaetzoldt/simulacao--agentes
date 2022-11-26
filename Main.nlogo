@@ -1,4 +1,3 @@
-
 patches-own [asfalto quarteirao]
 breed [carros carro]
 
@@ -11,7 +10,7 @@ to setup
 end
 
 to go
-
+  ask carros [move_carro]
    tick
  end
 
@@ -21,11 +20,15 @@ to reset
 end
 
 to setup-carro
-  ask carros[
+
+  ask carros [
   set shape "car"
    set color yellow
   set size 8]
 end
+
+
+
 
 to asfalto-carro
    if any? patches with [asfalto = true][
@@ -37,8 +40,13 @@ to define-asfaltos
   ask patches with [pcolor = 9.9] [set quarteirao true]
 end
 
+to move_carro
+  ask carros [fd 1 rt random 20 lt random 20]
 
-
+  ask carros[
+    if [asfalto] of patch-ahead 5 = 0
+    [set heading heading - 180]]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 280
