@@ -1,4 +1,4 @@
-patches-own [asfalto quarteirao]
+patches-own [asfalto quarteirao agua]
 breed [carros carro]
 
 to setup
@@ -36,8 +36,10 @@ to asfalto-carro
 end
 
 to define-asfaltos
-  ask patches with [pcolor <= 0] [set asfalto true]
-  ask patches with [pcolor >= 9.9] [set quarteirao true]
+  ask patches with [pcolor = 0] [set asfalto true]
+  ask patches with [pcolor = 9.9] [set quarteirao true]
+  ask patches with [pcolor = 94.9] [set agua true]
+
 end
 
 to move_carro
@@ -129,12 +131,12 @@ NIL
 CHOOSER
 20
 110
-155
+172
 155
 bairros
 bairros
-"mapa.png"
-0
+"mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
+3
 
 @#$#@#$#@
 @#$#@#$#@
