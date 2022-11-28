@@ -7,6 +7,16 @@ to setup
   define-asfaltos
   setup-carro
   asfalto-carro
+
+
+  create-turtles 1 [
+    set xcor 197
+    set ycor 130
+    set shape "house"
+    set heading 0
+    set size 15
+    set color red
+  ]
 end
 
 to go

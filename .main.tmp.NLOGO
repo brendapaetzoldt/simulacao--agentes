@@ -7,6 +7,19 @@ to setup
   define-asfaltos
   setup-carro
   asfalto-carro
+
+;  ask patch 197 131[
+;    set shape "house"
+;  ]
+
+  create-turtles 1 [
+    set xcor
+    set ycor 0
+    set shape "house"
+    set heading 0
+    set size 10
+    set color red
+  ]
 end
 
 to go
@@ -38,7 +51,7 @@ end
 to define-asfaltos
   ask patches with [pcolor = 0] [set asfalto true]
   ask patches with [pcolor = 9.9] [set quarteirao true]
-  ask patches with [pcolor = ] [set agua true]
+  ask patches with [pcolor = 94.9] [set agua true]
 
 end
 
