@@ -2,23 +2,22 @@ patches-own [asfalto quarteirao agua]
 breed [carros carro]
 
 to setup
+
   import-pcolors bairros
   resize-world 0 230 0 138
   define-asfaltos
   setup-carro
   asfalto-carro
 
-;  ask patch 197 131[
-;    set shape "house"
-;  ]
 
   create-turtles 1 [
-    set xcor
-    set ycor 0
+    set xcor 197
+    set ycor 130
     set shape "house"
     set heading 0
-    set size 10
+    set size 15
     set color red
+
   ]
 end
 
@@ -45,7 +44,7 @@ end
 
 to asfalto-carro
    if any? patches with [asfalto = true][
-  ask one-of patches with [asfalto = true] [sprout-carros 3]]
+  ask one-of patches with [asfalto = true] [sprout-carros 1]]
 end
 
 to define-asfaltos
