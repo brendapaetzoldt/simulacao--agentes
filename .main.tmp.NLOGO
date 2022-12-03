@@ -2,17 +2,18 @@ patches-own [asfalto quarteirao agua]
 breed [carros carro]
 
 to setup
-
+    clear-all
+  reset-ticks
   import-pcolors bairros
   resize-world 0 230 0 138
   define-asfaltos
   setup-carro
   asfalto-carro
-
+    setup-carro
 
   create-turtles 1 [
-    set xcor 197
-    set ycor 130
+    set xcor 147
+    set ycor 93
     set shape "house"
     set heading 0
     set size 15
@@ -148,7 +149,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-3
+1
 
 @#$#@#$#@
 @#$#@#$#@

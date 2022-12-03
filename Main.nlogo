@@ -12,8 +12,8 @@ to setup
     setup-carro
 
   create-turtles 1 [
-    set xcor 197
-    set ycor 130
+    set xcor 150
+    set ycor 98
     set shape "house"
     set heading 0
     set size 15
@@ -149,7 +149,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-3
+1
 
 @#$#@#$#@
 @#$#@#$#@
