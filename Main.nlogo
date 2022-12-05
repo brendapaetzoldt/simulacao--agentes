@@ -1,11 +1,19 @@
-patches-own [asfalto quarteirao agua]
+extensions [ array qlearningextension]
+
+patches-own [asfalto quarteirao agua reward]
+turtles-own[utility]
 breed [carros carro]
+
+globals [
+  elapsedEpisodes
+]
 
 to setup
     clear-all
   reset-ticks
   import-pcolors bairros
   resize-world 0 230 0 138
+   set elapsedEpisodes 0
   define-asfaltos
   setup-carro
   asfalto-carro
@@ -18,7 +26,7 @@ to setup
     set heading 0
     set size 15
     set color red
-
+    set reward -1.00
   ]
 end
 
@@ -37,7 +45,8 @@ to setup-carro
   ask carros [
   set shape "car"
    set color yellow
-  set size 8]
+  set size 8
+   set utility [reward] of patch-here]
 end
 
 
@@ -49,9 +58,9 @@ to asfalto-carro
 end
 
 to define-asfaltos
-  ask patches with [pcolor = 0] [set asfalto true]
-  ask patches with [pcolor = 9.9] [set quarteirao true]
-  ask patches with [pcolor = 94.9] [set agua true]
+  ask patches with [pcolor = 0] [set asfalto true set reward -0.04]
+  ask patches with [pcolor = 9.9] [set quarteirao true set reward -1.00]
+  ask patches with [pcolor = 94.9] [set agua true set reward -1.00]
 
 end
 
@@ -62,6 +71,8 @@ to move_carro
     if [asfalto] of patch-ahead 5 = 0
     [set heading heading - 180]]
 end
+
+
 @#$#@#$#@
 GRAPHICS-WINDOW
 280
@@ -149,7 +160,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-1
+6
 
 @#$#@#$#@
 @#$#@#$#@
