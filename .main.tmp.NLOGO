@@ -1,6 +1,6 @@
 extensions [ array qlearningextension]
 
-patches-own [asfalto quarteirao agua reward]
+patches-own [asfalto quarteirao agua reward isEndState]
 turtles-own[utility]
 breed [carros carro]
 
@@ -27,6 +27,7 @@ to setup
     set size 15
     set color red
     set reward -1.00
+    set isEndState true
   ]
 end
 
@@ -45,7 +46,8 @@ to setup-carro
   ask carros [
   set shape "car"
    set color yellow
-  set size 8
+  set size 5
+      set heading 0
    set utility [reward] of patch-here]
 end
 
@@ -58,9 +60,9 @@ to asfalto-carro
 end
 
 to define-asfaltos
-  ask patches with [pcolor = 0] [set asfalto true set reward -0.04]
-  ask patches with [pcolor = 9.9] [set quarteirao true set reward -1.00]
-  ask patches with [pcolor = 94.9] [set agua true set reward -1.00]
+  ask patches with [pcolor = 0] [set asfalto true set reward -0.04   set isEndState false]
+  ask patches with [pcolor = 9.9] [set quarteirao true set reward -1.00   set isEndState false]
+  ask patches with [pcolor = 94.9] [set agua true set reward -1.00   set isEndState false]
 
 end
 
@@ -68,10 +70,12 @@ to move_carro
   ask carros [fd 1 rt random 20 lt random 20]
 
   ask carros[
-    if [asfalto] of patch-ahead 5 = 0
-    [set heading heading - 180]]
-end
 
+   if patch-ahead 1 != nobody and not [asfalto] of patch-ahead 1 [
+    move-to patch-ahead 1
+  ]]
+  set utility utility + [reward] of patch-here
+end
 
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -160,7 +164,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-6
+0
 
 @#$#@#$#@
 @#$#@#$#@
