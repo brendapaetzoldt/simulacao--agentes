@@ -1,78 +1,172 @@
-extensions [ array qlearningextension]
+breed[postos hospital]
+breed[ambulances ambulance]
+breed[people person]
+breed [cars car]
 
-patches-own [asfalto quarteirao agua reward isEndState]
-turtles-own[utility]
-breed [carros carro]
 
-globals [
-  elapsedEpisodes
+directed-link-breed[services service]
+
+globals[
+
+  speed
+  grid-x-inc
+  grid-y-inc
+]
+patches-own
+[
+  asfalto quarteirao agua
 ]
 
+postos-own[
+  hurted
+]
+
+ambulances-own[
+  owner
+  busy
+]
+
+
+services-own[
+  return
+]
+
+
+
 to setup
-    clear-all
+   clear-all
   reset-ticks
-  import-pcolors bairros
-  resize-world 0 230 0 138
-   set elapsedEpisodes 0
+    resize-world 0 230 0 138
+ import-pcolors mapa
   define-asfaltos
-  setup-carro
-  asfalto-carro
+  set speed 3
 
 
-  create-turtles 1 [
+  create-postos 1[
     set xcor 150
-    set ycor 98
+    set ycor 93
+    set size 10
     set shape "house"
-    set heading 0
-    set size 15
-    set color red
-    set reward 1.00
-    set isEndState true
+    set hurted 0
+    set color one-of [red]
   ]
+
+  let i 0
+  while [i < 1][
+    create-ambulances 1[
+      set owner (hospital i)
+      move-to owner
+      set busy -1
+      set size 8
+      set color [color] of owner
+      set shape "truck"
+      set size 7
+    ]
+    set i i + 1
+  ]
+
+  create-turtles 1[
+    set shape "car"
+    set size 5
+    set color one-of [yellow blue green]
+    move-to one-of patches with [pcolor = 0]
+   ]
+
+end
+
+
+
+to define-asfaltos
+  ask patches with [pcolor = 0] [set asfalto true]
+  ask patches with [pcolor = 9.9] [set quarteirao true]
+  ask patches with [pcolor = 94.9] [set agua true]
+
 end
 
 to go
-  ask carros [move_carro]
-   tick
- end
+  if (ticks mod 100) = 0 [createHurted]
+  move
+  tick
+   ask turtles [
+    if shape = "car" [
+    ifelse [pcolor] of patch-ahead 2 != black
 
-to reset
-  clear-all
-  reset-ticks
-end
+  [ lt random-float 360 ]
+  [ fd 2 ]
+  ]]
+ask turtles [
+    if shape = "truck" [
+    ifelse [pcolor] of patch-ahead 2 != black
 
-to setup-carro
-
-  ask carros [
-  set shape "car"
-   set color yellow
-  set size 5
-      set heading 0
-   set utility [reward] of patch-here]
-end
-
+  [ lt random-float 360 ]
+  [ fd 2 ]
+  ]]
 
 
 
-to asfalto-carro
-   if any? patches with [asfalto = true][
-  ask one-of patches with [asfalto = true] [sprout-carros 1]]
-end
+     end
 
-to define-asfaltos
-  ask patches with [pcolor = 0] [set asfalto true set reward -0.04   set isEndState false]
-  ask patches with [pcolor = 9.9] [set quarteirao true set reward -1.00   set isEndState false]
-  ask patches with [pcolor = 94.9] [set agua true set reward -1.00   set isEndState false]
+
+
+to avoid
+  ifelse [pcolor] of patch-ahead 1 != black
+  [ lt random-float 360 ]   ;; We see a blue patch in front of us. Turn a random amount.
+  [ fd 1 ]
 
 end
 
-to move_carro
-  ask carros [fd 1 rt random 20 lt random 20]
 
-  ask carros[
-    if [asfalto] of patch-ahead 5 = 0
-    [set heading heading - 180]]
+to createHurted
 
+  create-people random 2 [
+
+    setxy random-xcor random-ycor
+    move-to one-of patches with [pcolor = black]
+    set shape "star"
+    set size 5
+    set color red
+
+
+    if any? ambulances with [busy = -1][
+      let nearestAmbulance min-one-of (ambulances with [busy = -1])[distance myself]
+      create-service-to nearestAmbulance [set return false]
+      ask nearestAmbulance [set busy myself]
+      ask services[hide-link]
+    ]
+  ]
+
+end
+
+to move
+    ask services with [return][
+    let target [owner] of end2
+    ask both-ends[
+        ifelse distance target < speed [
+        move-to target
+        ask target[set hurted hurted + 1]
+       ifelse breed = ambulances
+        [set busy -1]
+        [die]
+      ][
+        face target
+        fd speed
+      ]
+    ]
+  ]
+
+  ask services with [not return][
+    let flag false
+   ask end2[
+      ifelse distance other-end < speed [
+        move-to other-end
+        set flag true
+      ][
+        face other-end
+        fd speed
+      ]
+    ]
+    if flag [set return true]
+  ]
 
 end
 @#$#@#$#@
@@ -90,8 +184,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-0
-0
+1
+1
 1
 0
 230
@@ -104,24 +198,7 @@ ticks
 30.0
 
 BUTTON
-20
-10
-83
-55
-NIL
-reset
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-85
+18
 10
 148
 55
@@ -156,11 +233,11 @@ NIL
 
 CHOOSER
 20
-110
+120
 172
-155
-bairros
-bairros
+165
+mapa
+mapa
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
 6
 
