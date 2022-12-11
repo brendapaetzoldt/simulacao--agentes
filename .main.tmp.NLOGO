@@ -17,7 +17,7 @@ to setup
   define-asfaltos
   setup-carro
   asfalto-carro
-    setup-carro
+
 
   create-turtles 1 [
     set xcor 150
@@ -70,13 +70,11 @@ to move_carro
   ask carros [fd 1 rt random 20 lt random 20]
 
   ask carros[
+    if [asfalto] of patch-ahead 5 = 0
+    [set heading heading - 180]]
 
-   if patch-ahead 1 != nobody and not [asfalto] of patch-ahead 1 [
-    move-to patch-ahead 1
-  ]]
-  set utility utility + [reward] of patch-here
+
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 280
@@ -164,7 +162,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-0
+6
 
 @#$#@#$#@
 @#$#@#$#@

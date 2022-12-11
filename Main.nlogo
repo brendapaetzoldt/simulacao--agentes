@@ -17,7 +17,7 @@ to setup
   define-asfaltos
   setup-carro
   asfalto-carro
-    setup-carro
+
 
   create-turtles 1 [
     set xcor 150
@@ -26,7 +26,7 @@ to setup
     set heading 0
     set size 15
     set color red
-    set reward -1.00
+    set reward 1.00
     set isEndState true
   ]
 end
@@ -75,7 +75,6 @@ to move_carro
 
 
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 280
@@ -163,7 +162,7 @@ CHOOSER
 bairros
 bairros
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
-0
+6
 
 @#$#@#$#@
 @#$#@#$#@
