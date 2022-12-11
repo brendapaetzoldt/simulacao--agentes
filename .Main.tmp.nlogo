@@ -92,14 +92,18 @@ to go
   [ lt random-float 360 ]
   [ fd 2 ]
   ]]
-  ask turtles [
+ask turtles [
     if shape = "truck" [
     ifelse [pcolor] of patch-ahead 2 != black
 
   [ lt random-float 360 ]
   [ fd 2 ]
   ]]
+
+
      end
+
+
 
 to avoid
   ifelse [pcolor] of patch-ahead 1 != black
