@@ -83,12 +83,12 @@ to define-asfaltos
 end
 
 to go
-  if (ticks mod 100) = 0 [criaSolicitacao]
+  if (ticks mod 50) = 0 [criaSolicitacao]
   move
   tick
    ask turtles [
     if shape = "car" [
-      if xcor > 138  [ die ]
+      if ycor > 138  [ die ]
       if xcor < 1  [ die ]
       if ycor < 1  [ die ]
       if ycor > 230  [ die ]
@@ -121,7 +121,7 @@ to criaSolicitacao
   create-pessoas random 2 [
 
     setxy random-xcor random-ycor
-    move-to one-of patches with [asfalto != true]
+    move-to one-of patches with [agua = true]
     set shape "star"
     set size 5
     set color red
@@ -250,11 +250,33 @@ QuantidadeCarros
 QuantidadeCarros
 0
 100
-20.0
+100.0
 1
 1
 NIL
 HORIZONTAL
+
+MONITOR
+20
+220
+130
+265
+Carros no mapa
+carrosAlive
+17
+1
+11
+
+MONITOR
+20
+270
+130
+315
+Resgates Aéreos
+ResgateAereo
+17
+1
+11
 
 @#$#@#$#@
 @#$#@#$#@
