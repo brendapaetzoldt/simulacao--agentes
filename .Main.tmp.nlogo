@@ -9,6 +9,7 @@ directed-link-breed[resgates resgate]
 globals[
   velocidade
 
+
 ]
 patches-own
 [
@@ -57,13 +58,13 @@ to setup
       set ocupado -1
       set size 8
       set color [color] of owner
-      set shape "truck"
+      set shape "airplane"
       set size 7
     ]
     set i i + 1
   ]
 
-  create-turtles 15[
+  create-turtles QuantidadeCarros[
     set shape "car"
     set size 5
     set color one-of [yellow blue green pink]
@@ -87,30 +88,32 @@ to go
   tick
    ask turtles [
     if shape = "car" [
+      if xcor > 138  [ die ]
+      if xcor < 1  [ die ]
+      if ycor < 1  [ die ]
+      if ycor > 230  [ die ]
+      if ycor = 150    [ die ]
+      if xcor = 88    [ die ]
     ifelse [pcolor] of patch-ahead 2 != black
 
   [ lt random-float 360 ]
   [ fd 2 ]
   ]]
-ask turtles [
+  ask turtles [
     if shape = "truck" [
+
     ifelse [pcolor] of patch-ahead 2 != black
 
   [ lt random-float 360 ]
   [ fd 2 ]
   ]]
+
+
+
+
 
 
      end
-
-
-
-to avoid
-  ifelse [pcolor] of patch-ahead 1 != black
-  [ lt random-float 360 ]   ;; We see a blue patch in front of us. Turn a random amount.
-  [ fd 1 ]
-
-end
 
 
 to criaSolicitacao
@@ -118,7 +121,7 @@ to criaSolicitacao
   create-pessoas random 2 [
 
     setxy random-xcor random-ycor
-    move-to one-of patches with [pcolor = black]
+    move-to one-of patches with [ = true]
     set shape "star"
     set size 5
     set color red
@@ -168,13 +171,13 @@ to move
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-280
+255
 10
-981
-436
+1223
+597
 -1
 -1
-3.0
+4.16
 1
 15
 1
@@ -237,6 +240,21 @@ mapa
 mapa
 "mapa.png" "7.5 alagada.png" "8.5 alagada.png" "9.5 alagada.png" "10.5 alagada.png" "12.96 alagada.png" "13.5 alagada.png"
 6
+
+SLIDER
+20
+175
+192
+208
+QuantidadeCarros
+QuantidadeCarros
+0
+100
+20.0
+1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 @#$#@#$#@
