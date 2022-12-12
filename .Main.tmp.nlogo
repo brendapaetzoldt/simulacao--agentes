@@ -50,18 +50,7 @@ to setup
     set color one-of [red]
   ]
 
-  let i 0
-  while [i < 1][
-    create-carrosSocorro 1[
-      set owner (abrigo i)
-      move-to owner
-      set ocupado -1
-      set size 8
-      set color [color] of owner
-      set shape "airplane"
-      set size 7
-    ]
-    set i i + 1
+
   ]
 
   create-turtles QuantidadeCarros[
@@ -83,7 +72,7 @@ to define-asfaltos
 end
 
 to go
-  if (ticks mod 2) = 0 [criaSolicitacao]
+  if (ticks mod 50) = 0 [criaSolicitacao]
   move
   tick
    ask turtles [

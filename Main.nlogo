@@ -50,19 +50,7 @@ to setup
     set color one-of [red]
   ]
 
-  let i 0
-  while [i < 1][
-    create-carrosSocorro 1[
-      set owner (abrigo i)
-      move-to owner
-      set ocupado -1
-      set size 8
-      set color [color] of owner
-      set shape "airplane"
-      set size 7
-    ]
-    set i i + 1
-  ]
+
 
   create-turtles QuantidadeCarros[
     set shape "car"
@@ -83,8 +71,8 @@ to define-asfaltos
 end
 
 to go
-  if (ticks mod 50) = 0 [criaSolicitacao]
-  move
+
+
   tick
    ask turtles [
     if shape = "car" [
@@ -99,14 +87,7 @@ to go
   [ lt random-float 360 ]
   [ fd 2 ]
   ]]
-  ask turtles [
-    if shape = "truck" [
 
-    ifelse [pcolor] of patch-ahead 2 != black
-
-  [ lt random-float 360 ]
-  [ fd 2 ]
-  ]]
 
 
 
@@ -116,59 +97,6 @@ to go
      end
 
 
-to criaSolicitacao
-
-  create-pessoas random 2 [
-
-    setxy random-xcor random-ycor
-    move-to one-of patches with [agua = true]
-    set shape "star"
-    set size 5
-    set color red
-
-
-    if any? carrosSocorro with [ocupado = -1][
-      let nearestAmbulance min-one-of (carrosSocorro with [ocupado = -1])[distance myself]
-      create-resgate-to nearestAmbulance [set retorna false]
-
-    ]
-  ]
-
-end
-
-to move
-    ask resgates with [retorna][
-    let target [owner] of end2
-    ask both-ends[
-        ifelse distance target < velocidade [
-
-        move-to target
-        ask target[set solicitante solicitante + 1]
-       ifelse breed = carrosSocorro
-        [set ocupado -1]
-        [die]
-      ][
-        face target
-        fd velocidade
-      ]
-    ]
-  ]
-
-  ask resgates with [not retorna][
-    let flag false
-   ask end2[
-      ifelse distance other-end < velocidade [
-        move-to other-end
-        set flag true
-      ][
-        face other-end
-        fd velocidade
-      ]
-    ]
-    if flag [set retorna true]
-  ]
-
-end
 @#$#@#$#@
 GRAPHICS-WINDOW
 255
