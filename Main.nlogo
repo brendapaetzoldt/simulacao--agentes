@@ -1,14 +1,13 @@
 breed[abrigos abrigo]
-breed[carrosSocorro carroSocorro]
 breed[pessoas pessoa]
 breed[carros carro]
 
 
-directed-link-breed[resgates resgate]
 
 globals[
   velocidade
-
+carrosAlive
+  ResgateAereo
 
 ]
 patches-own
@@ -20,15 +19,8 @@ abrigos-own[
   solicitante
 ]
 
-carrosSocorro-own[
-  owner
-  ocupado
-]
 
 
-resgates-own[
-  retorna
-]
 
 
 
@@ -71,8 +63,6 @@ to define-asfaltos
 end
 
 to go
-
-
   tick
    ask turtles [
     if shape = "car" [
@@ -88,15 +78,7 @@ to go
   [ fd 2 ]
   ]]
 
-
-
-
-
-
-
-     end
-
-
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 255
@@ -172,13 +154,13 @@ mapa
 SLIDER
 20
 175
-192
+175
 208
 QuantidadeCarros
 QuantidadeCarros
 0
 100
-100.0
+24.0
 1
 1
 NIL
@@ -190,18 +172,7 @@ MONITOR
 130
 265
 Carros no mapa
-carrosAlive
-17
-1
-11
-
-MONITOR
-20
-270
-130
-315
-Resgates Aéreos
-ResgateAereo
+QuantidadeCarros
 17
 1
 11
