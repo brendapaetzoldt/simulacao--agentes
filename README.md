@@ -8,7 +8,7 @@
 * [Introdução](#Introdução)
 * [Trabalhos Relacionados](#Trabalhos-Relacionados)
 * [Especificação e Implementação da Simulação](#Especificação-e-Implementação-da-Simulação)
-* [Setup](#setup)
+* [Resultados e Discussão](#Resultados-e-Discussão)
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
@@ -131,6 +131,44 @@ Cada Patch possui uma cor e de acordo com ela sua natureza e definida. Caso a
 cor do Patch seja preta, naquele momento aquela coordenada e um asfalto, se for branca
 e um quarteirão e por fim, azul que é considerada uma área alagada. Os agentes carros só
 podem transitar por Patchs de cor preta, ja que esses representem estradas. Quando um 
-dos agentes se deparar com um Patch azul ou branco, ele e impedido de seguir em frente
+dos agentes se deparar com um Patch azul ou branco, ele e impedido de seguir em frente.
+
+Ao se deparar com uma cor diferente da preta ele da uma volta de 365° e então anda para 
+frente novamente. Um agente tem sucesso quando consegue alcanc¸ar o ponto em que esta localizado
+o abrigo ou quando ele consegue sair do bairro por alguma rua que nao esteja alagada e
+fac¸a ligac¸ao com o fim do mapa. Enquanto isso não ocorre, ele anda sempre em frente 
+evitando ruas alagadas e quarteiroes.
+
+
+
+
+## Resultados e Discussão
+Foram realizadas trinta execuções em cada cenário de alagamento da simulação, sendo 
+dez com apenas vinte e cinco agentes carros no mapa, dez execuções com cinquenta 
+agentes e por fim, o restante com cem carros. Em cada uma das execuções os agentes 
+iniciavam em uma localização totalmente aleatória, por este motivo foi necessário repetir o experimento para evitar possíveis vieses nos resultados. A figura 3 aprenta a média dos resultados obtidos em todas as execuções. 
+
+
+Percebe-se que na execução dos cenários com apenas vinte e cinco carros os resultados obtidos nas cotar de 9,5 metros e 10,5 metros nao houveram nenhuma diferença
+na quantidade de carros que permaneceram na simulação após a execução de 200 ticks.
+Os demais resultados nao variaram significativamente e permaneceram próximos uns dos outros.
+
+
+Já no experimento realizado com cinquenta carros, os maiores resultados de 
+agentes que nao conseguiram evacuar da simulação no período estipulado sao no cenário 
+de cota de 7,5 metros e 13,5 metros, respectivamente a cota mais baixa e a mais alta
+da simulação. O mesmo acontece quando foram colocados cem agentes na simulação, 
+mas neste caso a maior quantidade acaba sendo no cenario de maior valor da cota de 
+inundação. 
+
+
+Um fator observaveldurante a simulação e ao analisar a imagem 2 e que quanto
+mais alta e a cota de inundação mais saidas do mapa são bloqueadas pela agua. Com
+menos rotas para sair do bairro em momentos de cheia, os carros acabam se afunilando e
+tendo difuculdade para evacuar.
+
+
+A figura 4 apresenta o desvio padrao ocorrido das execuções realizadas. Não
+foram identificados grandes valores de desvio padrao na média das simulações realizadas, isso significa que dentre os resultados obtidos em todas as execuções, a quantidade de agentes que nao conseguiram evacuar da simulação foi bastante homogêneo.
 
 
