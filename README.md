@@ -9,12 +9,7 @@
 * [Trabalhos Relacionados](#Trabalhos-Relacionados)
 * [Especificação e Implementação da Simulação](#Especificação-e-Implementação-da-Simulação)
 * [Resultados e Discussão](#Resultados-e-Discussão)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
+
 
 
 ## Resumo
