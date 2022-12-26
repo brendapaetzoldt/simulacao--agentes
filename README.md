@@ -111,6 +111,7 @@ com estudos e observac¸oes realizados pela entidade. As camadas foram adicionad
 todo o bairro e alternar entre as cotas para visualizar como cada local e afetado pelas inundações. A figura 1 mostra uma visão geral de todas as ruas do bairro com todas as
 suas camadas de inundação ativas no QGIS.
 
+![Example screenshot](https://user-images.githubusercontent.com/18469694/209573798-0b4c4f8a-3b26-41b1-abb7-7f5beab29d49.png)
 
 Apos a exportação dos mapas, foi realizado o desenho para a Simulação no NetLogo. O metodo import-pcolors le um arquivo de imagem, dimensiona-o para as mesmas 
 dimensoes da grade, mantendo a proporção original da imagem e transfere as cores de
