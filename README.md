@@ -32,13 +32,13 @@ O aumento da frequencia de enchentes, sejam elas de grande porte ou apenas alaga
  causam grandes problemas na vida dos moradores que em alguns casos
 precisam fazer outra rota para chegar ao seu trabalho, fica ilhado ou ate mesmo precisa abandonar 
 sua casa e ir ate um abrigo disponibilizado pela prefeitura para poder-se manter 
-em segurança com seus familiares ate que a situação normalize [Schäffer].  
+em segurança com seus familiares ate que a situação normalize.  
 
 
 Ciente das ocorrencias mais frequentes a cada ano no município, a Defesa Civil do
 estado de Santa Catarina disponibiliza em seu site diversas informações uteis: como cotas
 do rio por rua, rotas para a locomoçao pelas trans enchentes, metragem do rio em tempo
-real, pontos de maior risco de acidentes geologicos e localização de abrigos [Civil 2022]. 
+real, pontos de maior risco de acidentes geologicos e localização de abrigos. 
 
 
 O Bairro Cantagalo e localizado na região norte da cidade, fazendo a ligação entre os
@@ -46,7 +46,7 @@ demais bairros da área urbana e a rodovia BR470 que leva a saída da cidade. Ne
 bairro esta localizada a rua Prefeito Wenceslau Borini que possuí a sua cota de inundação
 mínima 3,01 metros, sendo esta a menor cota registrada no município. O bairro conta com
 um abrigo chamado: ”Abrigo Obra Kolping” na Rua Adolfo Kolping que e para onde os 
-moradores das areas mais baixas do bairro se abrigam quando necessário [Civil 2022]. 
+moradores das areas mais baixas do bairro se abrigam quando necessário. 
 
 
 Foi desenvolvida uma simulaçao multiagente de evacuacção onde os agentes são
@@ -102,7 +102,7 @@ Para ser possível criar uma simulação com uma malha viária do bairro Canta G
 extremamente parecida com a realidade, foi utilizado um arquivo shapefile de georeferenciamento criado pelo IBGE - Instituto Brasileiro de Geografia e Estatística no software
 QGis 3.28. Neste arquivo estao contidas as informações referêntes aos nomes de logradouros, bairros e geocódigos de todo o município, mas como o objetivo deste trabalho
 e simular apenas o bairro citado acima, foi feito um recorte em suas divisas e todas as
-informações dos demais bairros [IBGE 2022]. 
+informações dos demais bairros. 
 
 
 A defesa civil de Rio do Sul disponibiliza em seu site as camadas em arquivos
@@ -111,22 +111,23 @@ com estudos e observac¸oes realizados pela entidade. As camadas foram adicionad
 todo o bairro e alternar entre as cotas para visualizar como cada local e afetado pelas inundações. A figura 1 mostra uma visão geral de todas as ruas do bairro com todas as
 suas camadas de inundação ativas no QGIS.
 
-![Example screenshot](https://user-images.githubusercontent.com/18469694/209573798-0b4c4f8a-3b26-41b1-abb7-7f5beab29d49.png)
+![Figura 1](https://user-images.githubusercontent.com/18469694/209573798-0b4c4f8a-3b26-41b1-abb7-7f5beab29d49.png)
 
 Apos a exportação dos mapas, foi realizado o desenho para a Simulação no NetLogo. O metodo import-pcolors le um arquivo de imagem, dimensiona-o para as mesmas 
 dimensoes da grade, mantendo a proporção original da imagem e transfere as cores de
 pixel resultantes para os patches e e centralizada na grade de patches.
 As cores de patch resultantes ficam um pouco distorcidas, pois o espaço de cores
-NetLogo nao inclui todas as cores poss ˜ ´ıveis e tambem n ´ ao trabalha bem com a mudança
+NetLogo nao inclui todas as cores possíveis e tambem não trabalha bem com a mudança
 entre cores e tons. Na imagem 2 e possível observar os mapas exportados e importados
 pelo metodo import-pcolors.
 
+![Figura 2](https://user-images.githubusercontent.com/18469694/209573790-b9e6db1a-1437-43f4-b15b-50c3ba566059.png)
 
 
 Cada Patch possui uma cor e de acordo com ela sua natureza e definida. Caso a
 cor do Patch seja preta, naquele momento aquela coordenada e um asfalto, se for branca
 e um quarteirão e por fim, azul que é considerada uma área alagada. Os agentes carros só
-podem transitar por Patchs de cor preta, ja que esses representem estradas. Quando um 
+podem transitar por Patchs de cor preta, já que esses representem estradas. Quando um 
 dos agentes se deparar com um Patch azul ou branco, ele e impedido de seguir em frente.
 
 Ao se deparar com uma cor diferente da preta ele da uma volta de 365° e então anda para 
@@ -168,3 +169,4 @@ A figura 4 apresenta o desvio padrao ocorrido das execuções realizadas. Não
 foram identificados grandes valores de desvio padrao na média das simulações realizadas, isso significa que dentre os resultados obtidos em todas as execuções, a quantidade de agentes que nao conseguiram evacuar da simulação foi bastante homogêneo.
 
 
+![Figuras 3 e 4](https://user-images.githubusercontent.com/18469694/209573796-044df116-90df-4743-a199-4ba082c269d1.png)
