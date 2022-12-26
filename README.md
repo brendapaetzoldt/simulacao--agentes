@@ -1,5 +1,7 @@
 # Simulação de evacuação em enchente  
-> Simulação multiagente na evacuação durante uma enchente no bairro Canta Galo na cidade de Rio do Sul - SC
+> Desenvolvido para a disciplina 85EAG - Engenharia de Software Orientada a Agentes do curso Engenharia de Software da Udesc - Ceavi.
+
+Simulação multiagente na evacuação durante uma enchente no bairro Canta Galo na cidade de Rio do Sul - SC
 
 
 
